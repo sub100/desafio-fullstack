@@ -24,5 +24,6 @@ O usuário deverá ter informações de dados pessoais básicos, endereço e par
 ## Diferenciais
 - Autenticação na API com JWT
 - Utilização do Docker para o ambiente de desenvolvimento com um docker-compose.yml
+- Adicionar os contatos do usuário (telefones e emails) com um relacionamento muitos para muitos
 
 Bom desafio 😎
