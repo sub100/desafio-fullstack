@@ -17,7 +17,7 @@ O usuário deverá ter informações de dados pessoais básicos, endereço e par
 - No formulário, o campo `Cep` deve ser integrado com a API da [ViaCEP](https://viacep.com.br/) para preenchimento automático dos campos de endereço.  
 
 ## Back-end
-- Nós utilizamos Laravel ou PHP estruturado
+- Nós utilizamos Laravel/Lumen, Symfony ou PHP Orientado a Objetos
 - Crie uma API REST para o CRUD de usuários, fazendo uso das boas práticas.
 - Utilize MySQL para a persistência dos dados dos usuários cadastrados.
 
