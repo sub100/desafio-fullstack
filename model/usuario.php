@@ -1,6 +1,6 @@
 <?php
 
-include("helper/datetimeHelper.php");
+include(ROOT_SITE."helper/datetimeHelper.php");
 
 class Usuario {
     public $id;
@@ -62,6 +62,111 @@ class Usuario {
 
     public function getDataAlteracao() {
         return DateTimeHelper::convertDateTimeToString($this->dataalteracao);
+    }
+
+    public function setNome($nome){
+        $this->nome = $nome;
+    }
+
+    public function setDataNascimento($datanascimento){
+        $this->datanascimento = $datanascimento;
+    }
+
+    public function setSexo($sexo){
+        $this->sexo = $sexo;
+    }
+
+    public function setCpf($cpf){
+        $cpf = preg_replace('/[^0-9]/', '', $cpf);
+        $this->cpf = $cpf;
+    }
+
+    public function setCep($cep){
+        $cep = preg_replace('/[^0-9]/', '', $cep);
+        $this->cep = $cep;
+    }
+
+    public function setLogradouro($logradouro){
+        $this->logradouro = $logradouro;
+    }
+
+    public function setNumero($numero){
+        $this->numero = $numero;
+    }
+
+    public function setComplemento($complemento){
+        $this->complemento = $complemento;
+    }
+
+    public function setBairro($bairro){
+        $this->bairro = $bairro;
+    }
+
+    public function setLocalidade($localidade){
+        $this->localidade = $localidade;
+    }
+
+    public function setUf($uf){
+        $this->uf = $uf;
+    }
+
+    public function setParentesco($parentesco){
+        $this->parentesco = $parentesco;
+    }
+
+    public function insert() {
+        global $dbh;
+
+        $sqlUsuario = 
+            "INSERT INTO usuario
+                    (nome,
+                    datanascimento,
+                    sexo,
+                    cpf,
+                    cep,
+                    logradouro,
+                    numero,
+                    complemento,
+                    bairro,
+                    localidade,
+                    uf,
+                    parentesco,
+                    dataalteracao)
+            VALUES (:nome,
+                    :datanascimento,
+                    :sexo,
+                    :cpf,
+                    :cep,
+                    :logradouro,
+                    :numero,
+                    :complemento,
+                    :bairro,
+                    :localidade,
+                    :uf,
+                    :parentesco,
+                    NOW())";
+
+        $statement = $dbh->prepare($sqlUsuario);
+
+        $sucesso = $statement->execute([
+            ':nome' => $this->nome,
+            ':datanascimento' => $this->datanascimento,
+            ':sexo' => $this->sexo,
+            ':cpf' => $this->cpf,
+            ':cep' => $this->cep,
+            ':logradouro' => $this->logradouro,
+            ':numero' => $this->numero,
+            ':complemento' => $this->complemento,
+            ':bairro' => $this->bairro,
+            ':localidade' => $this->localidade,
+            ':uf' => $this->uf,
+            ':parentesco' => $this->parentesco,
+        ]);
+
+        if ($sucesso)
+            return $dbh->lastInsertId();
+        else
+            return "Erro";
     }
 
 }
