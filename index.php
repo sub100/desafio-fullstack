@@ -41,6 +41,3 @@ include("inc/conexao.php");
 
   </body>
 </html>
-
-
-

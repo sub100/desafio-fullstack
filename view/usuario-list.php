@@ -3,8 +3,7 @@
 @include_once("../inc/conexao.php");
 include(ROOT_SITE."model/usuario.php");
 
-echo "<div id='loadDataUsuarios'>
-<table id='dtUsuarios' class='table table-striped table-bordered' cellspacing='0' width='100%'>
+echo "<table id='dtUsuarios' class='table table-striped table-bordered' cellspacing='0' width='100%'>
     <thead>
         <tr>
             <th>ID</th>
@@ -18,6 +17,6 @@ echo "<div id='loadDataUsuarios'>
             <th>Ações</th>
         </tr>
     </thead>
-</table>
-</div>";
+</table>";
+
 ?>
