@@ -18,6 +18,10 @@ class Usuario {
     public $parentesco;
     public $dataalteracao;
 
+    function __construct() {
+        $this->dataalteracao = date("Y-m-d H:i:s");
+    }
+
     public function getDataNascimento() {
         return DateTimeHelper::convertDateToString($this->datanascimento);
     }
@@ -164,7 +168,7 @@ class Usuario {
                     :localidade,
                     :uf,
                     :parentesco,
-                    NOW())";
+                    :dataalteracao)";
 
         $statement = $dbh->prepare($sqlUsuario);
 
@@ -181,6 +185,7 @@ class Usuario {
             ':localidade' => $this->localidade,
             ':uf' => $this->uf,
             ':parentesco' => $this->parentesco,
+            ':dataalteracao' => $this->dataalteracao,
         ]);
 
         if ($sucesso) {
@@ -192,6 +197,8 @@ class Usuario {
 
     public function update() {
         global $dbh;
+        
+        $this->dataalteracao = date("Y-m-d H:i:s");
 
         $sqlUsuario =
             "UPDATE usuario SET
@@ -207,7 +214,7 @@ class Usuario {
                     localidade = :localidade,
                     uf = :uf,
                     parentesco = :parentesco,
-                    dataalteracao = NOW()
+                    dataalteracao = :dataalteracao
               WHERE id = :id";
 
         $statement = $dbh->prepare($sqlUsuario);
@@ -226,6 +233,7 @@ class Usuario {
             ':localidade' => $this->localidade,
             ':uf' => $this->uf,
             ':parentesco' => $this->parentesco,
+            ':dataalteracao' => $this->dataalteracao,
         ]);
 
         if ($sucesso)
