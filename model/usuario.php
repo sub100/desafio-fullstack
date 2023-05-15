@@ -22,20 +22,28 @@ class Usuario {
         global $dbh;
 
         $sqlUsuario = 
-            "SELECT id,
-                    nome,
-                    datanascimento,
-                    sexo,
-                    cpf,
-                    cep,
-                    parentesco,
-                    dataalteracao
-            FROM usuario
-            ORDER BY dataalteracao DESC ";
+            "SELECT *
+               FROM usuario
+              ORDER BY dataalteracao DESC ";
 
         $resUsuario = $dbh->query($sqlUsuario);
 
         return $resUsuario->fetchAll(PDO::FETCH_CLASS, "Usuario");
+    }
+
+    public static function getById($id) {
+        global $dbh;
+
+        $sqlUsuario = 
+            "SELECT *
+               FROM usuario
+              WHERE id = :id";
+
+        $resUsuario = $dbh->prepare($sqlUsuario);
+
+        $resUsuario->execute([':id' => $id]);
+
+        return $resUsuario->fetchObject("Usuario");
     }
 
     public function getDataNascimento() {
@@ -165,6 +173,50 @@ class Usuario {
 
         if ($sucesso)
             return $dbh->lastInsertId();
+        else
+            return "Erro";
+    }
+
+    public function update() {
+        global $dbh;
+
+        $sqlUsuario =
+            "UPDATE usuario SET
+                    nome = :nome,
+                    datanascimento = :datanascimento,
+                    sexo = :sexo,
+                    cpf = :cpf,
+                    cep = :cep,
+                    logradouro = :logradouro,
+                    numero = :numero,
+                    complemento = :complemento,
+                    bairro = :bairro,
+                    localidade = :localidade,
+                    uf = :uf,
+                    parentesco = :parentesco,
+                    dataalteracao = NOW()
+              WHERE id = :id";
+
+        $statement = $dbh->prepare($sqlUsuario);
+
+        $sucesso = $statement->execute([
+            ':id' => $this->id,
+            ':nome' => $this->nome,
+            ':datanascimento' => $this->datanascimento,
+            ':sexo' => $this->sexo,
+            ':cpf' => $this->cpf,
+            ':cep' => $this->cep,
+            ':logradouro' => $this->logradouro,
+            ':numero' => $this->numero,
+            ':complemento' => $this->complemento,
+            ':bairro' => $this->bairro,
+            ':localidade' => $this->localidade,
+            ':uf' => $this->uf,
+            ':parentesco' => $this->parentesco,
+        ]);
+
+        if ($sucesso)
+            return $this->id;
         else
             return "Erro";
     }

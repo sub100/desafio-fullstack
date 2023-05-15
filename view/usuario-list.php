@@ -13,20 +13,22 @@ echo "<table id='dtUsuarios' class='table table-striped table-bordered' cellspac
             <th>CEP</th>
             <th>Parentesco</th>
             <th>Alteração</th>
+            <th>Ações</th>
         </tr>
     </thead>
     <tbody>";
 
-        foreach (Usuario::getAll() as $linhaUsuario) {
+        foreach (Usuario::getAll() as $usuario) {
             echo "<tr>
-                <td>{$linhaUsuario->id}</td>
-                <td>{$linhaUsuario->nome}</td>
-                <td>{$linhaUsuario->getDataNascimento()}</td>
-                <td>{$linhaUsuario->getSexo()}</td>
-                <td>{$linhaUsuario->cpf}</td>
-                <td>{$linhaUsuario->cep}</td>
-                <td>{$linhaUsuario->getParentesco()}</td>
-                <td>{$linhaUsuario->getDataAlteracao()}</td>
+                <td>{$usuario->id}</td>
+                <td>{$usuario->nome}</td>
+                <td>{$usuario->getDataNascimento()}</td>
+                <td>{$usuario->getSexo()}</td>
+                <td>{$usuario->cpf}</td>
+                <td>{$usuario->cep}</td>
+                <td>{$usuario->getParentesco()}</td>
+                <td>{$usuario->getDataAlteracao()}</td>
+                <td><a href='?pg=usuario-form&id={$usuario->id}'>Alterar</a> | <a href='#'>Excluir</a></td>
             </tr>";
         }
 
