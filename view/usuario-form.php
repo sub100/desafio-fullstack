@@ -11,7 +11,7 @@ if ($_GET["id"] > 0) {
 <form method="post" id="formUsuario">
     <div class="form-group">
         <label for="nome">Nome</label>
-        <input type="text" class="form-control" name="nome" id="nome" value="<?=$usuario->nome?>" required>
+        <input type="text" class="form-control" name="nome" id="nome" value="<?=$usuario->nome?>" maxlength="100" required>
     </div>
     <div class='row'>
         <div class='col'>
@@ -48,13 +48,13 @@ if ($_GET["id"] > 0) {
         <div class='col-7'>
             <div class="form-group">
                 <label for="logradouro">Logradouro</label>
-                <input type="text" class="form-control" name="logradouro" id="logradouro" value="<?=$usuario->logradouro?>" required>
+                <input type="text" class="form-control" name="logradouro" id="logradouro" maxlength="100" value="<?=$usuario->logradouro?>" required>
             </div>
         </div>
         <div class='col-2'>
             <div class="form-group">
                 <label for="numero">Número</label>
-                <input type="text" class="form-control" name="numero" id="numero" value="<?=$usuario->numero?>" required>
+                <input type="text" class="form-control" name="numero" id="numero" maxlength="20" value="<?=$usuario->numero?>" required>
             </div>
         </div>
     </div>
@@ -62,13 +62,13 @@ if ($_GET["id"] > 0) {
         <div class='col'>
             <div class="form-group">
                 <label for="complemento">Complemento</label>
-                <input type="text" class="form-control" name="complemento" id="complemento" value="<?=$usuario->complemento?>">
+                <input type="text" class="form-control" name="complemento" id="complemento" maxlength="100" value="<?=$usuario->complemento?>">
             </div>
         </div>
         <div class='col'>
             <div class="form-group">
                 <label for="bairro">Bairro</label>
-                <input type="text" class="form-control" name="bairro" id="bairro" value="<?=$usuario->bairro?>" required>
+                <input type="text" class="form-control" name="bairro" id="bairro" maxlength="100" value="<?=$usuario->bairro?>" required>
             </div>
         </div>
     </div>
@@ -76,7 +76,7 @@ if ($_GET["id"] > 0) {
         <div class='col-10'>
             <div class="form-group">
                 <label for="localidade">Localidade</label>
-                <input type="text" class="form-control" name="localidade" id="localidade" value="<?=$usuario->localidade?>" required>
+                <input type="text" class="form-control" name="localidade" id="localidade" maxlength="100" value="<?=$usuario->localidade?>" required>
             </div>
         </div>
         <div class='col-2'>
