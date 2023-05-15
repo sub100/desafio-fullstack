@@ -15,7 +15,7 @@ $('#formUsuario').on('submit', function() {
         alert("Erro");
       }
       alert(response.mensagem);
-      //window.location.href='?pg=usuario-list';
+      window.location.href='?pg=usuario-list';
         
     }).fail(function() {
         alert("Erro");

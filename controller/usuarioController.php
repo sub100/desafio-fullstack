@@ -1,10 +1,15 @@
 <?php
 
-if ($_POST) {
-    
-    include_once("../inc/conexao.php");
-    include("../model/usuario.php");
+include_once("../inc/conexao.php");
+include("../model/usuario.php");
 
+if ($_POST["acao"] == "delete") {
+
+    Usuario::deleteById($_POST["id"]);
+    $mensagem = "Usuário deletado com sucesso!";
+
+} else if ($_POST) {
+    
     if ($_POST["id"] > 0)
         $usuario = Usuario::getById($_POST["id"]);
     else

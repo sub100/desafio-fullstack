@@ -28,7 +28,7 @@ echo "<table id='dtUsuarios' class='table table-striped table-bordered' cellspac
                 <td>{$usuario->cep}</td>
                 <td>{$usuario->getParentesco()}</td>
                 <td>{$usuario->getDataAlteracao()}</td>
-                <td><a href='?pg=usuario-form&id={$usuario->id}'>Alterar</a> | <a href='#'>Excluir</a></td>
+                <td><a href='?pg=usuario-form&id={$usuario->id}'>Alterar</a> | <a href='#' class='btnDelete' id='{$usuario->id}'>Excluir</a></td>
             </tr>";
         }
 

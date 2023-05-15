@@ -46,6 +46,18 @@ class Usuario {
         return $resUsuario->fetchObject("Usuario");
     }
 
+    public static function deleteById($id) {
+        global $dbh;
+
+        $sqlUsuario = 
+            "DELETE FROM usuario
+              WHERE id = :id";
+
+        $resUsuario = $dbh->prepare($sqlUsuario);
+
+        $resUsuario->execute([':id' => $id]);
+    }
+
     public function getDataNascimento() {
         return DateTimeHelper::convertDateToString($this->datanascimento);
     }
