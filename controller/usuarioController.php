@@ -3,7 +3,45 @@
 include_once("../inc/conexao.php");
 include("../model/usuario.php");
 
-if ($_POST["acao"] == "delete") {
+if ($_GET["acao"] == "listUsuarios") {
+
+    $jaTem = false;
+    $data = "";
+
+    foreach (Usuario::getAll() as $usuario) {
+        if ($jaTem)
+            $data.= ",";
+        $jaTem = true;
+
+        $data.= "[
+            \"{$usuario->id}\",
+            \"{$usuario->nome}\",
+            \"{$usuario->getDataNascimento()}\",
+            \"{$usuario->getSexo()}\",
+            \"{$usuario->cpf}\",
+            \"{$usuario->cep}\",
+            \"{$usuario->getParentesco()}\",
+            \"{$usuario->getDataAlteracao()}\",
+            \"<a href='?pg=usuario-form&id={$usuario->id}'>Alterar</a> | <a href='#' class='btnDelete' id='{$usuario->id}'>Excluir</a>\"
+        ]";
+    }
+
+    exit ('{
+        "data": [
+            '.$data.'
+        ]
+      }');
+
+} if ($_POST["acao"] == "verificaAlteracoes") {
+
+    $usuario = Usuario::getUltimaAlteracao($_POST["id"]);
+
+    exit("{
+        \"id\": \"$usuario->id\",
+        \"dataalteracao\": \"$usuario->dataalteracao\"
+    }");
+
+} else if ($_POST["acao"] == "delete") {
 
     Usuario::deleteById($_POST["id"]);
     $mensagem = "Usuário deletado com sucesso!";

@@ -233,6 +233,24 @@ class Usuario {
             return "Erro";
     }
 
+    public static function getUltimaAlteracao() {
+        global $dbh;
+
+        $sqlUsuario = 
+            "SELECT id,
+                    dataalteracao
+               FROM usuario
+              ORDER BY dataalteracao DESC,
+                    id DESC
+              LIMIT 1";
+
+        $resUsuario = $dbh->prepare($sqlUsuario);
+
+        $resUsuario->execute();
+
+        return $resUsuario->fetchObject("Usuario");
+    }
+
 }
 
 ?>

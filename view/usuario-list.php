@@ -1,8 +1,10 @@
 <?php
 
-include("model/usuario.php");
+@include_once("../inc/conexao.php");
+include(ROOT_SITE."model/usuario.php");
 
-echo "<table id='dtUsuarios' class='table table-striped table-bordered' cellspacing='0' width='100%'>
+echo "<div id='loadDataUsuarios'>
+<table id='dtUsuarios' class='table table-striped table-bordered' cellspacing='0' width='100%'>
     <thead>
         <tr>
             <th>ID</th>
@@ -16,22 +18,6 @@ echo "<table id='dtUsuarios' class='table table-striped table-bordered' cellspac
             <th>Ações</th>
         </tr>
     </thead>
-    <tbody>";
-
-        foreach (Usuario::getAll() as $usuario) {
-            echo "<tr>
-                <td>{$usuario->id}</td>
-                <td>{$usuario->nome}</td>
-                <td>{$usuario->getDataNascimento()}</td>
-                <td>{$usuario->getSexo()}</td>
-                <td>{$usuario->cpf}</td>
-                <td>{$usuario->cep}</td>
-                <td>{$usuario->getParentesco()}</td>
-                <td>{$usuario->getDataAlteracao()}</td>
-                <td><a href='?pg=usuario-form&id={$usuario->id}'>Alterar</a> | <a href='#' class='btnDelete' id='{$usuario->id}'>Excluir</a></td>
-            </tr>";
-        }
-
-    echo "</tbody>
-</table>";
+</table>
+</div>";
 ?>
