@@ -43,6 +43,7 @@ Também deve ser definido o **diretório raiz** do projeto, na variável `ROOT_S
 ## Acessar o projeto por telas
 
 Para acessar o projeto por tela, basta acessar a url do projeto no servidor apache no navegador de preferência (Ex: Google Chrome).
+
 Ao acessar, estarão disponíveis dois botões.
 
 Um deles, `Listar Usuários`, que irá direcionar para a página que listará todos os usuários da base de dados. Além da listagem, é possível editar e/ou excluir os usuários já cadastrados.
