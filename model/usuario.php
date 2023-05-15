@@ -183,9 +183,10 @@ class Usuario {
             ':parentesco' => $this->parentesco,
         ]);
 
-        if ($sucesso)
-            return $dbh->lastInsertId();
-        else
+        if ($sucesso) {
+            $this->id = $dbh->lastInsertId();
+            return $this->id;
+        } else
             return "Erro";
     }
 
