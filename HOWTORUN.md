@@ -35,24 +35,35 @@ CREATE TABLE usuario (
 ### Código fonte
 
 Deverá ser realizada a cópia dos códigos para o ambiente apache que deseja ser executado projeto.
+
 Também deverá ser parametrizado o arquivo `inc/conexao.php` com a **string de conexão mysql**, **usuário** e **senha**.
+
 Também deve ser definido o **diretório raiz** do projeto, na variável `ROOT_SITE` no mesmo arquivo mencionado acima.
 
 ## Acessar o projeto por telas
 
 Para acessar o projeto por tela, basta acessar a url do projeto no servidor apache no navegador de preferência (Ex: Google Chrome).
 Ao acessar, estarão disponíveis dois botões.
+
 Um deles, `Listar Usuários`, que irá direcionar para a página que listará todos os usuários da base de dados. Além da listagem, é possível editar e/ou excluir os usuários já cadastrados.
+
 O segundo botão, `Cadastrar Usuários`, que irá direcionar para o formulário de cadastro de usuários.
 
 ## Acessar o projeto por API
 
 Para acessar o projeto por api, basta acessar a url do projeto no servidor apache no aplicativo rest de preferência (Ex: Postman), acrescentando `/api`.
+
 Foi disponibilizado o serviço para manutenção de usuários no endereço `/usuarioApi.php`, e para acessar os métodos, deve ser adicionado à url, `acao=*acao*` (Ex: `/api/usuarioApi.php?acao=getAll`).
+
+
 - Métodos:
+
 **getAll**: Este método irá retornar todos os usuários cadastrados.
+
 **getById**: Este método irá retornar o usuário do id informado. Deve ser acrescentado o parâmetro `id=*id*`.
+
 **deleteById**: Este método irá delete o usuário do id informado. Deve ser acrescentado o parâmetro `id=*id*`.
+
 **insert**: Este método irá incluir um novo usuário na base de dados. As informações do usuário deve ser passada via json, conforme exemplo abaixo:
 ```json
 {
@@ -70,6 +81,7 @@ Foi disponibilizado o serviço para manutenção de usuários no endereço `/usu
    "parentesco":"P"
 }
 ```
+
 **update**: Este método irá alterar um usuário existente na base de dados. As informações do usuário deve ser passada via json, conforme exemplo abaixo:
 ```json
 {
