@@ -85,3 +85,53 @@ $("#cep").keyup(function(event){
 });
 
 maskCep();
+
+
+$(document).ready(function() {
+
+    function limpa_formulário_cep() {
+        $("#logradouro").val("");
+        $("#bairro").val("");
+        $("#localidade").val("");
+        $("#uf").val("");
+    }
+    
+    $("#cep").blur(function() {
+
+        var cep = $(this).val().replace(/\D/g, '');
+
+        if (cep != "") {
+
+            var validacep = /^[0-9]{8}$/;
+
+            if(validacep.test(cep)) {
+
+                $("#logradouro").val("...");
+                $("#bairro").val("...");
+                $("#localidade").val("...");
+                $("#uf").val("...");
+
+                $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+
+                    if (!("erro" in dados)) {
+                        $("#logradouro").val(dados.logradouro);
+                        $("#bairro").val(dados.bairro);
+                        $("#localidade").val(dados.localidade);
+                        $("#uf").val(dados.uf);
+                    }
+                    else {
+                        limpa_formulário_cep();
+                        alert("CEP não encontrado.");
+                    }
+                });
+            }
+            else {
+                limpa_formulário_cep();
+                alert("Formato de CEP inválido.");
+            }
+        }
+        else {
+            limpa_formulário_cep();
+        }
+    });
+});
