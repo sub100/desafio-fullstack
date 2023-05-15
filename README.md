@@ -1,4 +1,3 @@
-deletar
 Se as informações de algum usuário forem alteradas, a página de listagem deverá ser atualizada sem a necessidade do recarregamento da página.
 Crie uma API REST para o CRUD de usuários, fazendo uso das boas práticas.
 Adicionar os contatos do usuário (telefones e emails) com um relacionamento muitos para muitos

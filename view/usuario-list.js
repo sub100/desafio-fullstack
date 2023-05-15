@@ -1,5 +1,7 @@
 $(document).ready(function () {
-    $('#dtUsuarios').DataTable();
+    $('#dtUsuarios').DataTable({
+        order: [[7, 'desc']],
+    });
 });
 
 $(document).on("click",'.btnDelete',function(){
